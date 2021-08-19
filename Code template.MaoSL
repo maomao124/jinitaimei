@@ -1880,6 +1880,8 @@ bool ExtractResource(LPCTSTR strDstFile, LPCTSTR strResType, LPCTSTR strResName)
 
 	// 播放音乐
 	mciSendString(_T("play mymusic"), NULL, 0, NULL);
+	//循环播放：
+	//mciSendString(_T("play mymusic repeat"), NULL, 0, NULL);
 
 	// 输出提示信息
 	outtextxy(0, 0, _T("按任意键停止播放"));
